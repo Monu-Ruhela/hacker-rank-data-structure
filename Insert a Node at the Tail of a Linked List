@@ -1,0 +1,23 @@
+SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) 
+{
+  SinglyLinkedListNode* loc;
+  SinglyLinkedListNode* node = malloc(sizeof(SinglyLinkedListNode));
+  node->data=data;
+  node->next=NULL;
+
+    if(head==NULL)
+    {
+      head=node;
+      return head;
+    }
+    
+    
+    
+    loc = head;
+    while(loc->next != NULL)
+    {
+    loc = loc->next;
+    }
+     loc->next=node;
+return head;
+}
