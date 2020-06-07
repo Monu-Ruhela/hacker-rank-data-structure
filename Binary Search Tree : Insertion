@@ -1,0 +1,16 @@
+struct node* insert( struct node* root, int data ) 
+{
+	struct node* new;                       //create local pointer
+    new= malloc(sizeof(struct node));	    //create  node
+    new->data=data;
+    new->left=NULL;
+    new->right=NULL;
+
+ if(root==NULL)
+        return new;
+    else if(data>root->data) // x is greater. Should be inserted to right
+        root->right = insert(root->right, data);
+    else                    // x is smaller should be inserted to left
+        root->left = insert(root->left,data);
+    return root;	
+}
