@@ -1,0 +1,14 @@
+
+int hourglass(int A[6][6],int k,int l)
+    {
+    int i,j,sum=0;
+    for(i=k;i<k+3;i++)
+        {
+        for(j=l;j<l+3;j++)
+          {
+        if(i==k+1 && j!=l+1)
+            continue;
+        else
+            sum=sum+A[i][j];
+        }}return sum;
+}
