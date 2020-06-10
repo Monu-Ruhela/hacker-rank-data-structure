@@ -1,0 +1,18 @@
+int getNode(SinglyLinkedListNode* head, int positionFromTail)
+ {
+
+    int i=0;
+    SinglyLinkedListNode* loc = head;
+    SinglyLinkedListNode* result = head;
+    while(loc!=NULL)
+    {
+        loc=loc->next;
+        if (i++>positionFromTail)
+        {
+            result=result->next;
+        }
+    }
+    return result->data;
+    
+
+}
