@@ -1,0 +1,47 @@
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void leftRotatebyOne(int arr[], int n); 
+  
+/*Function to left rotate arr[] of size n by d*/
+void leftRotate(int arr[], int d, int n) 
+{ 
+    int i; 
+    for (i = 0; i < d; i++) 
+        leftRotatebyOne(arr, n); 
+} 
+  
+void leftRotatebyOne(int arr[], int n) 
+{ 
+    int temp = arr[0], i; 
+    for (i = 0; i < n - 1; i++) 
+        arr[i] = arr[i + 1]; 
+    arr[i] = temp; 
+} 
+  
+/* utility function to print an array */
+void printArray(int arr[], int n) 
+{ 
+    int i; 
+    for (i = 0; i < n; i++) 
+        printf("%d ", arr[i]); 
+} 
+  
+/* Driver program to test above functions */
+int main() 
+{ 
+    int arr[100000],i,n,d;
+    scanf("%d %d",&n,&d);  //takeing the array input and rotation time=d
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    } 
+    leftRotate(arr, d, n); 
+    printArray(arr, n); 
+    return 0; 
+} 
