@@ -1,0 +1,45 @@
+DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data)
+ {
+    DoublyLinkedListNode* newNode = malloc(sizeof(DoublyLinkedListNode));
+   // Node *newNode = (Node*) malloc(sizeof(Node)); 
+   //Set the data of newNode as data
+   newNode->data = data; 
+   //Now we need to update the next and prev pointers of newNode -
+   //based on its position
+   if(head == NULL) {
+       //Base case : If the list is empty
+       newNode->next = NULL; //Set next and prev pointers as NULL
+       newNode->prev = NULL;
+       //This node now becomes the head node(the only node), so return it.
+       return newNode;
+   }
+   if(head->data >= newNode->data) {
+       //If the node's position is in the beginning of the list
+       //set the next pointer of the newNode to point to the currentHead
+       newNode->next = head; 
+       newNode->prev = NULL; //Because it is the beginning of the list
+       //Update the prev pointer of the current head to point to newNode
+       head->prev = newNode; 
+       //This node now becomes the head node, so make it.
+       head = newNode;
+   } else {
+       //Find the position of the new node using a temporary current Node
+      DoublyLinkedListNode* current = head;
+       while(current->next != NULL && current->next->data < newNode->data) {
+           current = current->next;
+       }
+       //newNode lies between current and current->next
+       newNode->prev = current;
+       newNode->next = current->next;
+       //It might happen that newNode's position is at the end. 
+       //In that case we cannot update the current->next's (which is NULL) 
+       //prev pointer
+       if(current->next != NULL) {
+           current->next->prev = newNode;
+       }
+       //Update the next pointer of current to point to this new node.
+       current->next = newNode; 
+   } 
+   // return the head pointer.
+   return head;
+}
