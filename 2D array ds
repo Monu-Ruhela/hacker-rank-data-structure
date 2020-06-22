@@ -1,4 +1,9 @@
 
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
 int hourglass(int A[6][6],int k,int l)
     {
     int i,j,sum=0;
@@ -11,4 +16,22 @@ int hourglass(int A[6][6],int k,int l)
         else
             sum=sum+A[i][j];
         }}return sum;
+}
+
+int main() {
+    int A[6][6],i,j,k,sum=-200;
+    
+      for(i=0;i<6;i++)
+         for(j=0;j<6;j++)
+          scanf("%d",&A[i][j]);
+          
+      for(i=0;i<4;i++)
+          {
+          for(j=0;j<4;j++)
+             { k=hourglass(A,i,j);
+          if(sum<k)
+              sum=k;}
+      }
+    printf("%d",sum);
+    return 0;
 }
